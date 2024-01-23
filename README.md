@@ -1,3 +1,3 @@
 # Folder structures
-desktop: electronjs desktop app
+desktop: electronjs desktop app  
 api: backend for kuratus to store contents
