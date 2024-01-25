@@ -1,6 +1,6 @@
 const { app, BrowserWindow, globalShortcut } = require('electron')
 const { Tray, Menu, nativeImage } = require('electron')
-const appState = require('./src/appState')
+const appState = require('./appState')
 
 const path = require('node:path')
 let win;
@@ -15,10 +15,17 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-  win.loadFile('./src/quick-add.html')
+  win.loadFile('./dist/pages/create-item/index.html')
+
+  win.on('closed', () => {
+    app.dock?.hide();
+
+  })
+  app.dock?.show();
 }
 
 app.whenReady().then(() => {
+  app.dock?.hide(); // hide icon in taskbar/dock, we want app run in background with icon on Tray
   // Register a 'CommandOrControl+X' shortcut listener.
   const ret = globalShortcut.register('CommandOrControl+K', () => {
     console.log('CommandOrControl+K is pressed')
