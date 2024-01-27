@@ -16,6 +16,8 @@ const createWindow = () => {
     }
   })
   win.loadFile('./dist/pages/create-item/index.html')
+  win.webContents.openDevTools();
+
 
   win.on('closed', () => {
     app.dock?.hide();
