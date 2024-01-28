@@ -11,6 +11,7 @@ const createWindow = () => {
   win = new BrowserWindow({
     width: 800,
     height: 500,
+    icon: 'assets/kuratus@2x.png',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
