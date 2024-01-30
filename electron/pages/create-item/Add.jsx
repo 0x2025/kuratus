@@ -1,4 +1,3 @@
-import Axios from 'axios';
 import React,{useState} from 'react';
 
 export function App() {
@@ -8,18 +7,17 @@ export function App() {
     title: "",
     details: ""
   });
+  
   const handleChange = (e) =>{
     const name = e.target.name;
     const value = e.target.value;
     setData({...data, [name]: value})
   }
+  
   const handleSubmit = (e) =>{
     e.preventDefault()
   }
-  // const onSubmit=(e)=>{
-  //   e.preventDefault();
-  //   alert('submit')
-  // }
+  
   return (
     <form method='post' onSubmit={handleSubmit}>
       <div class="p-4">
@@ -57,7 +55,6 @@ export function App() {
 
       <div class="mt-6 flex items-center justify-center gap-x-6 px-4">
         <button type="submit"
-          // onClick={(e)=>onSubmit(e)}
           class="rounded-md bg-neutral-950 px-6 py-2 text-md font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600">
           Create</button>
       </div>
