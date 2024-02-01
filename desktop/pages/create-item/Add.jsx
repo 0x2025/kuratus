@@ -16,6 +16,7 @@ export function App() {
   
   const handleSubmit = (e) =>{
     e.preventDefault()
+    alert('hello')
   }
   
   return (
@@ -23,7 +24,7 @@ export function App() {
       <div class="p-4">
         <div class="">
           <div class="">
-          
+          ABC ZZ
             <div class="grid grid-cols-1 gap-6">
               <label class="block">
                 <span class="text-gray-700">Link</span>

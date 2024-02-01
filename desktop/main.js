@@ -48,7 +48,9 @@ app.whenReady().then(() => {
 
   const contextMenu = Menu.buildFromTemplate([
     { label: 'Open', type: 'normal' },
-    { label: 'Options', type: 'normal' },
+    { label: 'Options', type: 'normal', click: ()=>{
+      createOptionWindow();
+    } },
     { label: '', type: 'separator' },
     {
       label: 'Quit', type: 'normal', click: () => {
@@ -75,3 +77,8 @@ app.on('will-quit', (e) => {
   // Unregister all shortcuts.
   globalShortcut.unregisterAll()
 })
+
+
+function createOptionWindow(){
+  // TODO: Khang will implement this method.
+}
