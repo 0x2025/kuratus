@@ -53,7 +53,7 @@ const data = [
   }
 ]
 const listCuratus = data.map((curate) =>
-  <CurateItem user={curate.user} slogan={curate.slogan} ></CurateItem>
+  <CurateItem key={curate.user} user={curate.user} slogan={curate.slogan} ></CurateItem>
 );
 
 export default function Home() {
