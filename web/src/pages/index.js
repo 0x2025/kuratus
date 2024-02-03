@@ -1,62 +1,11 @@
-import { Playfair_Display } from "next/font/google";
+import { GetItem } from "@/libs/Db";
 import Link from 'next/link'
 
-const inter = Playfair_Display({ subsets: ["latin"] });
-const data = [
-  {
-    user: 'sang',
-    slogan: 'Follow me on software architecture'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  },
-  {
-    user: 'dale',
-    slogan: 'software development icon.'
-  }
-]
-const listCuratus = data.map((curate) =>
-  <CurateItem key={curate.user} user={curate.user} slogan={curate.slogan} ></CurateItem>
-);
+export default function Home(props) {
 
-export default function Home() {
+  const listCuratus = props.users?.map((curate) =>
+    <CurateItem key={curate.username} username={curate.username} slogan={curate.slogan} ></CurateItem>
+  );
   return (
     <div>
       <div class="flex items-center flex-wrap pt-10">
@@ -69,8 +18,8 @@ export default function Home() {
 function CurateItem(props) {
   return (
 
-    <Link href={`/${props.user}`} className="group my-2 ml-6 items-center gap-2 rounded-full bg-white/25 px-3 py-2 text-xs text-slate-900 dark:text-slate-100 ring-1 ring-inset ring-black/[0.08] hover:bg-white/50 hover:ring-black/[0.13] sm:flex md:ml-8 min-[1300px]:flex">
-      <span class="font-semibold">{props.user}</span><svg width="2" height="2" aria-hidden="true"
+    <Link href={`/${props.username}`} className="group my-2 ml-6 items-center gap-2 rounded-full bg-white/25 px-3 py-2 text-xs text-slate-900 dark:text-slate-100 ring-1 ring-inset ring-black/[0.08] hover:bg-white/50 hover:ring-black/[0.13] sm:flex md:ml-8 min-[1300px]:flex">
+      <span class="font-semibold">{props.username}</span><svg width="2" height="2" aria-hidden="true"
         class="fill-slate-900 dark:fill-white">
         <circle cx="1" cy="1" r="1"></circle>
       </svg><span class="font-medium">
@@ -83,4 +32,12 @@ function CurateItem(props) {
       </svg>
     </Link>
   )
+}
+
+
+
+
+export const getServerSideProps = async (context) => {
+  const users = await GetItem("users.json")
+  return { props: { users } }
 }
