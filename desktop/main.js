@@ -80,5 +80,24 @@ app.on('will-quit', (e) => {
 
 
 function createOptionWindow(){
-  // TODO: Khang will implement this method.
+  if (win && !win.isDestroyed()) {
+    return
+  }
+  win = new BrowserWindow({
+    width: 800,
+    height: 500,
+    icon: 'assets/kuratus@2x.png',
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
+  })
+  win.loadFile('./dist/pages/options/index.html')
+  win.webContents.openDevTools();
+
+
+  win.on('closed', () => {
+    app.dock?.hide();
+
+  })
+  app.dock?.show();
 }
