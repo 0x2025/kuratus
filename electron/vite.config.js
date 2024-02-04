@@ -10,7 +10,10 @@ export default defineConfig({
     rollupOptions: {
       input: [
         'pages/create-item/index.html',
-        'pages/main/index.html'
+        'pages/main/index.html',
+        'pages/options/index.html',
+        'pages/signIn/index.html',
+        'pages/signUp/index.html'
       ]
     },
   },
