@@ -14,7 +14,7 @@ export default function User(props) {
       <div className='mt-10 w-96'>
         <p>No data.</p>
       <div class="grid grid-cols-1 place-content-between">
-        <a href="/" class="text-sm font-semibold leading-8">All experts <span aria-hidden="true">→</span></a>
+        <Link href="/" class="text-sm font-semibold leading-8">All experts <span aria-hidden="true">→</span></Link>
       </div>
     </div>
     )
@@ -42,7 +42,7 @@ export default function User(props) {
     <div className='mt-10 w-96'>
       <div class="grid grid-cols-2 place-content-between">
         <h2 className='text-lg font-semibold leading-8 tracking-tight'>Week {currentWeek}</h2>
-        <a href="/" class="text-sm font-semibold leading-8 text-right">All experts <span aria-hidden="true">→</span></a>
+        <Link href="/" class="text-sm font-semibold leading-8 text-right">All experts <span aria-hidden="true">→</span></Link>
       </div>
       <div className='border-b border-gray-200 px-4 py-5 sm:px-6'>
         <ul>
