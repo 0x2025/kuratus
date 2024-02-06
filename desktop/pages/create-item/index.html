@@ -3,11 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.kuratus.com/api/items; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy"
+    content="default-src 'self' https://www.kuratus.com/api/items ; script-src 'self'" />
   <title>Kuratus - Curate your learning and share</title>
   <link href="./style.css" rel="stylesheet">
-  
+
 </head>
 
 <body>
@@ -15,4 +16,5 @@
 </body>
 <script type="module" src="./index.jsx"></script>
 <script type="module" src="./renderer.js"></script>
+
 </html>
