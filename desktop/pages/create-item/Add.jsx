@@ -9,10 +9,13 @@ export function App() {
     description: ""
   });
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setData({ ...data, [name]: value })
+    if (name == 'href') {
+      await updateTitle(value)
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -40,7 +43,12 @@ export function App() {
         await window.electronAPI.closeWindow();
       }).catch(e => alert(e));
   }
-
+  const updateTitle = async (url) => {
+    const title = await window.electronAPI.getUrlTitle(url);
+    if (title) {
+      setData({ ...data, title: title || data.title, href: url || data.href });
+    }
+  }
   useEffect(() => {
     navigator.clipboard.read().then(async function loadClipboard(clipboardItems) {
       const clipboard = await clipboardItems[0].getType('text/plain');
@@ -48,10 +56,7 @@ export function App() {
       if (text?.startsWith('http')) {
         setData({ ...data, href: text || data.href });
 
-        const title = await window.electronAPI.getUrlTitle(text);
-        if (title) {
-          setData({ ...data, title: title || data.title, href: text || data.href });
-        }
+        await updateTitle(text);
       }
     }
     )
