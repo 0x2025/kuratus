@@ -110,7 +110,7 @@ function createWindow(windowSrc, width = 800, height = 500) {
     }
   })
   win.loadFile(windowSrc)
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 
   win.on('closed', () => {
     app.dock?.hide();
