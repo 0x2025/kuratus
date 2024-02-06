@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 export function App() {
 
   const [data, setData] = useState({
-    link: "",
+    href: "",
     title: "",
-    details: ""
+    description: ""
   });
 
   const handleChange = (e) => {
@@ -28,15 +28,16 @@ export function App() {
       headers: new Headers({
         "Content-Type": "application/json",
         "Authorization": `Basic ${btoa(`${credential.username}:${credential.password}`)}`
-      })
+      }),
+      body: JSON.stringify(data)
     })
 
     fetch(request)
       .then((res) => {
         return res.json();
       })
-      .then(result => {
-        alert(result)
+      .then(async (result) => {
+        await window.electronAPI.closeWindow();
       }).catch(e => alert(e));
   }
 
@@ -45,12 +46,11 @@ export function App() {
       const clipboard = await clipboardItems[0].getType('text/plain');
       const text = await clipboard?.text();
       if (text?.startsWith('http')) {
-        setData({ ...data, link: text || data.link });
+        setData({ ...data, href: text || data.href });
 
         const title = await window.electronAPI.getUrlTitle(text);
-        console.log('title', title)
         if (title) {
-          setData({ ...data, title: title || data.title, link: text || data.link });
+          setData({ ...data, title: title || data.title, href: text || data.href });
         }
       }
     }
@@ -65,8 +65,8 @@ export function App() {
             <div class="grid grid-cols-1 gap-6">
               <label class="block">
                 <span class="text-gray-700">Link</span>
-                <input name="link" id="link" type="text" tabIndex={0} autoFocus
-                  onChange={handleChange} value={data.link}
+                <input name="href" id="href" type="text" tabIndex={0} autoFocus
+                  onChange={handleChange} value={data.href}
                   class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                   placeholder="" />
               </label>
@@ -80,12 +80,11 @@ export function App() {
               <label class="block">
                 <span class="text-gray-700">Additional details</span>
                 <textarea
-                  name="details" id="details"
-                  onChange={handleChange} value={data.details}
+                  name="description" id="description"
+                  onChange={handleChange} value={data.description}
                   class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                   rows="5"></textarea>
               </label>
-              <div>{data.link}<br />{data.title}<br />{data.details}</div>
             </div>
           </div>
         </div>

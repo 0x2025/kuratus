@@ -1,7 +1,7 @@
 const { app, BrowserWindow, globalShortcut, ipcMain, safeStorage } = require('electron')
 const { Tray, Menu, nativeImage } = require('electron')
 const Store = require('electron-store');
-const Parser =  require('parse5');
+const Parser = require('parse5');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const store = new Store();
@@ -51,6 +51,8 @@ app.whenReady().then(() => {
   ipcMain.handle('options:save', saveOptions)
   ipcMain.handle('options:load', loadOptions);
   ipcMain.handle('utils:getUrlTitle', getUrlTitle)
+  ipcMain.handle('utils:closeWindow', closeWindow)
+
 })
 
 app.on('will-quit', (e) => {
@@ -110,10 +112,16 @@ function createWindow(windowSrc, width = 800, height = 500) {
   win.loadFile(windowSrc)
   win.webContents.openDevTools();
 
-
   win.on('closed', () => {
     app.dock?.hide();
 
   })
   app.dock?.show();
+}
+
+function closeWindow() {
+  for (window of BrowserWindow.getAllWindows()) {
+    console.log(`Closing ${window}`)
+    window.close();
+  }
 }

@@ -15,7 +15,7 @@ export default function User(props) {
       </p>
     )
   }
-  const curatedItem = items.map((item) =>
+  const curatedItem = items.filter(item=>item.href && item.title).map((item) =>
     <li key={item.id} class="relative flex items-center space-x-4 py-4">
       <div class="min-w-0 flex-auto">
         <div class="flex items-center gap-x-3">
@@ -24,7 +24,7 @@ export default function User(props) {
           </div>
           <h2 class="min-w-0 text-sm font-semibold leading-6 text-slate">
 
-            <Link href={item.href} class="flex gap-x-2">
+            <Link href={item.href || '#'} class="flex gap-x-2">
               <span class="truncate">{item.title}</span>
             </Link>
           </h2>
