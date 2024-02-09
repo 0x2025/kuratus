@@ -18,6 +18,7 @@ export default async function handler(request) {
 
   const username = searchParams.get('username');
   const slogan = searchParams.get('slogan');
+  const keywords = searchParams.get('keywords') || '.NET, nodejs, TDD, LLM, RAG, LangChain';
 
   if (!username || !slogan) {
     return new ImageResponse(<div
@@ -51,22 +52,22 @@ export default async function handler(request) {
         }}
       >
         <div tw="flex text-6xl">
-          <div tw="flex flex-col p-8 w-full">
+          <div tw="flex flex-col px-4 w-full">
             <h2 tw="flex flex-col text-gray-900 text-left">
-              <span tw="pt-10 text-gray-900">
+              <span tw="text-gray-900">
                 Week {currentWeek < 10 ? `0${currentWeek}` : currentWeek}
                 <sub tw="text-4xl text-gray-900 pl-4">{`${monday} - ${sunday}`}</sub>
               </span>
-              <div tw="mt-4 text-3xl">{`${year} Year progress`}</div>
+              <div tw="mt-2 text-3xl">{`${year} Year progress`}</div>
               <div style={{ display: 'flex' }} tw="w-full h-12 bg-gray-100">
-                <div tw="h-12 text-white bg-lime-500" style={{ width: `${percentOfYearRounded}%`, display: 'flex' }}>
-                  <span tw="pl-2 text-3xl">{percentOfYearRounded} %</span>
+                <div tw="h-12 text-white bg-green-500 justify-center p-0.5 text-3xl" style={{ width: `${percentOfYearRounded}%`, display: 'flex' }}>
+                {`${percentOfYearRounded}%`}
                 </div>
               </div>
             </ h2>
-            <div style={{ display: 'flex' }} tw='text-4xl'>
-              {/* <span>Keywords: nodejs, tdd, LLM, RAG, LangChain</span> */}
+            <div style={{ display: 'flex' }} tw='text-4xl flex-col justify-items-start'>
               <span tw="">Curated by {username} | {slogan}</span>
+              <span tw="pt-4 text-2xl">{`Keywords: ${keywords}`}</span>
             </div>
           </div>
         </div>
