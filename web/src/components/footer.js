@@ -11,6 +11,7 @@ export default function Footer() {
                                 <div class="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                                     <Link className="transition hover:text-green-500 dark:hover:text-green-400" href="/signup">Sign Up</Link>
                                     <Link className="transition hover:text-green-500 dark:hover:text-green-400" href="/signin">Sign In</Link>
+                                    <Link className="transition hover:text-green-500 dark:hover:text-green-400" href="/downloads">Downloads</Link>
                                 </div>
                                 <p class="text-sm text-zinc-400 dark:text-zinc-500">©Kuratus. All rights reserved.</p>
                             </div>

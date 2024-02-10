@@ -7,12 +7,15 @@ const {
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         // create user
+        console.log(req.body)
         const { username, email, slogan } = req.body;
         const key = `${username}/profile.json`;
+        console.log(key)
         const file = await GetItem(key);
         if (file != null) {
+            console.log(file)
             res.status(400).json({
-                message: 'Username is existed.'
+                message: 'Username is not available.'
             });
             return;
         }
