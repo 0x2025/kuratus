@@ -21,13 +21,12 @@ export default function User(props) {
     <li key={item.id} class="relative flex items-center space-x-4 py-4">
       <div class="min-w-0 flex-auto prose">
         <div class="flex items-center gap-x-3">
-          <h2 class="min-w-0 text-base font-semibold leading-6">
+          <h2 class="min-w-0 max-w-md text-base font-semibold leading-6">
             <Link href={item.href || '#'} rel="noopener noreferrer" target="_blank"
               className="group transition-all duration-300 ease-in-out relative  pl-1">
-              <span class="truncate">{item.title}</span>
-              <span class="absolute left-0 -bottom-0 w-full h-0.5 bg-green-500 -z-10 group-hover:h-full group-hover:transition-all rounded-sm"></span>
+              <span class="truncate text-ellipsis">{item.title}</span>
+              <span class="absolute left-0 -bottom-0 -right-0 w-full h-0.5 bg-green-500 -z-10 group-hover:h-full group-hover:transition-all rounded-sm"></span>
             </Link>
-
           </h2>
         </div>
         <div class="hyphens-auto mt-3 flex items-center gap-x-2.5 text-base leading-5 text-slate-600">
@@ -65,7 +64,6 @@ export default function User(props) {
           {curatedItem}
         </ul>
       </div>
-      {/* <p className='leading-10 text-center text-sm'>Show Older</p> */}
     </div>
   );
 }

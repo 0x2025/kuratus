@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <div class="fixed bottom-0 left-0 flex h-28 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black">
+        <div class="fixed bottom-0 left-0 flex h-16 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black">
             <div class="sm:px-8"><div class="mx-auto w-full max-w-7xl lg:px-8">
                 <div class="pb-2">
                     <div class="relative px-4 sm:px-8 lg:px-12">
