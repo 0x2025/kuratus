@@ -41,9 +41,9 @@ export default function User(props) {
   return (
     <div className='mt-10'>
       <Head>
-        <title>{`Kuratus | Curated by ${username}`}</title>
+        <title>{`Kuratus | All of us can be curators of our own learning.`}</title>
         <meta name="description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`}/>
-        <meta property="og:title" content={`Kuratus | Curated by ${username}`} />
+        <meta property="og:title" content={`Kuratus | All of us can be curators of our own learning.`} />
         <meta property="og:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`} />
         <meta property="og:image" content={`/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}`} />
         <meta property="og:url" content={`https://www.kuratus.com/${username}}`}/>
@@ -51,7 +51,7 @@ export default function User(props) {
         <meta name="twitter:card" content="summary_large_image"/>
         <meta property="twitter:domain" content="kuratus.com"/>
         <meta property="twitter:url" content={`https://www.kuratus.com/${username}}`}/>
-        <meta name="twitter:title" content={`Kuratus | Curated by ${username}`}/>
+        <meta name="twitter:title" content={`Kuratus | All of us can be curators of our own learning`}/>
         <meta name="twitter:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`}/>
         <meta name="twitter:image" content={`/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}&w=${currentWeek}`}/>
       </Head>
