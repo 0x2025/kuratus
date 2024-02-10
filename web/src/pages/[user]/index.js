@@ -9,7 +9,7 @@ export default function User(props) {
   const { items, username, slogan } = props;
   if (!items) {
     return (
-      <div className='mt-10 w-96'>
+      <div className='mt-10'>
         <p>No data.</p>
         <div class="grid grid-cols-1 place-content-between">
           <Link href="/" class="text-sm font-semibold leading-8">All experts <span aria-hidden="true">→</span></Link>
@@ -25,7 +25,7 @@ export default function User(props) {
             <Link href={item.href || '#'} rel="noopener noreferrer" target="_blank"
               className="group transition-all duration-300 ease-in-out relative  pl-1">
               <span class="truncate text-ellipsis">{item.title}</span>
-              <span class="absolute left-0 -bottom-0 -right-0 w-full h-0.5 bg-green-500 -z-10 group-hover:h-full group-hover:transition-all rounded-sm"></span>
+              <span class="absolute left-0 -bottom-0 w-full h-0.5 bg-green-500 -z-10 group-hover:h-full group-hover:transition-all rounded-sm"></span>
             </Link>
           </h2>
         </div>
@@ -39,7 +39,7 @@ export default function User(props) {
     </li>);
 
   return (
-    <div className='mt-10 w-96'>
+    <div className='mt-10'>
       <Head>
         <title>{`Kuratus | Curated by ${username}`}</title>
         <meta name="description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`}/>
@@ -53,7 +53,7 @@ export default function User(props) {
         <meta property="twitter:url" content={`https://www.kuratus.com/${username}}`}/>
         <meta name="twitter:title" content={`Kuratus | Curated by ${username}`}/>
         <meta name="twitter:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`}/>
-        <meta name="twitter:image" content={`/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}`}/>
+        <meta name="twitter:image" content={`/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}&w=${currentWeek}`}/>
       </Head>
       <div class="grid grid-cols-2 place-content-between">
         <h2 className='text-lg font-semibold leading-8 tracking-tight'>Week {currentWeek < 10 ? `0${currentWeek}` : currentWeek}</h2>
