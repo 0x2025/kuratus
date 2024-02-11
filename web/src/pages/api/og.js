@@ -1,5 +1,5 @@
 import { ImageResponse } from '@vercel/og';
-import { getWeek, nextSunday, previousMonday, getYear, getDaysInYear, getDayOfYear, format } from 'date-fns'
+import { getWeek, nextSunday, isSunday, previousMonday, getYear, getDaysInYear, getDayOfYear, format, isMonday } from 'date-fns'
 
 export const config = {
   runtime: 'edge',
@@ -8,8 +8,9 @@ export const config = {
 export default async function handler(request) {
   const today = new Date();
   const currentWeek = getWeek(today);
-  const sunday = format(nextSunday(today), 'dd MMM');
-  const monday = format(previousMonday(today), 'dd MMM');
+
+  const sunday = format(isSunday(today) ? today : nextSunday(today), 'dd MMM');
+  const monday = format(isMonday(today) ? today : previousMonday(today), 'dd MMM');
   const year = getYear(today);
   const totalDays = getDaysInYear(today);
   const percentOfYear = ((getDayOfYear(today)) / totalDays) * 100;
@@ -61,7 +62,7 @@ export default async function handler(request) {
               <div tw="mt-2 text-3xl">{`${year} Year progress`}</div>
               <div style={{ display: 'flex' }} tw="w-full h-12 bg-gray-100">
                 <div tw="h-12 text-white bg-green-500 justify-center p-0.5 text-3xl" style={{ width: `${percentOfYearRounded}%`, display: 'flex' }}>
-                {`${percentOfYearRounded}%`}
+                  {`${percentOfYearRounded}%`}
                 </div>
               </div>
             </ h2>
