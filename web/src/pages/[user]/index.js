@@ -1,5 +1,5 @@
 import { GetItem } from '@/libs/Db';
-import { getWeek } from 'date-fns'
+import { getWeek, isSunday } from 'date-fns'
 import Link from 'next/link';
 import Markdown from 'react-markdown';
 import Head from 'next/head'
@@ -7,7 +7,8 @@ import Image from 'next/image';
 import noDataIcon from "../../../public/nodata-bro.svg";
 
 export default function User(props) {
-  const currentWeek = getWeek(new Date());
+  const today = new Date();
+  const currentWeek = isSunday(today) ? getWeek(new Date()) - 1 : getWeek(new Date());
   const { items, username, slogan } = props;
 
   const curatedItem = items?.filter(item => item.href && item.title).map((item) =>

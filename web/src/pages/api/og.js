@@ -7,11 +7,8 @@ export const config = {
 
 export default async function handler(request) {
   const today = new Date();
-  const currentWeek = getWeek(today);
-  // Starting in monday and ending at Sunday
-  if (isSunday(today)) {
-    currentWeek = currentWeek - 1;
-  }
+  const currentWeek = isSunday(today) ? getWeek(new Date()) - 1 : getWeek(new Date());
+
   const sunday = format(isSunday(today) ? today : nextSunday(today), 'dd MMM');
   const monday = format(isMonday(today) ? today : previousMonday(today), 'dd MMM');
   const year = getYear(today);
