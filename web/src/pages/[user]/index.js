@@ -7,9 +7,28 @@ import Head from 'next/head'
 export default function User(props) {
   const currentWeek = getWeek(new Date());
   const { items, username, slogan } = props;
+  const showHeader =()=>{
+    <Head>
+        <title>{`Kuratus | All of us can be curators of our own learning.`}</title>
+        <meta name="description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`}/>
+        <meta property="og:title" content={`Kuratus | All of us can be curators of our own learning.`} />
+        <meta property="og:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`} />
+        <meta property="og:image" content={`https://www.kuratus.com/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}`} />
+        <meta property="og:url" content={`https://www.kuratus.com/${username}}`}/>
+        <meta property="og:type" content="website"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:domain" content="kuratus.com"/>
+        <meta property="twitter:url" content={`https://www.kuratus.com/${username}}`}/>
+        <meta name="twitter:title" content={`Kuratus | All of us can be curators of our own learning`}/>
+        <meta name="twitter:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`}/>
+        <meta name="twitter:image" content={`https://www.kuratus.com/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}&w=${currentWeek}`}/>
+      </Head>
+  }
+
   if (!items) {
     return (
       <div className='mt-10'>
+        {showHeader()}
         <p>No data.</p>
         <div class="grid grid-cols-1 place-content-between">
           <Link href="/" class="text-sm font-semibold leading-8">All experts <span aria-hidden="true">→</span></Link>
@@ -39,21 +58,7 @@ export default function User(props) {
 
   return (
     <div className='mt-10'>
-      <Head>
-        <title>{`Kuratus | All of us can be curators of our own learning.`}</title>
-        <meta name="description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`}/>
-        <meta property="og:title" content={`Kuratus | All of us can be curators of our own learning.`} />
-        <meta property="og:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`} />
-        <meta property="og:image" content={`https://www.kuratus.com/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}`} />
-        <meta property="og:url" content={`https://www.kuratus.com/${username}}`}/>
-        <meta property="og:type" content="website"/>
-        <meta name="twitter:card" content="summary_large_image"/>
-        <meta property="twitter:domain" content="kuratus.com"/>
-        <meta property="twitter:url" content={`https://www.kuratus.com/${username}}`}/>
-        <meta name="twitter:title" content={`Kuratus | All of us can be curators of our own learning`}/>
-        <meta name="twitter:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`}/>
-        <meta name="twitter:image" content={`https://www.kuratus.com/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}&w=${currentWeek}`}/>
-      </Head>
+      {showHeader()}
       <div class="grid grid-cols-2 place-content-between px-6">
         <h2 className='text-lg font-semibold leading-8 tracking-tight'>Week {currentWeek < 10 ? `0${currentWeek}` : currentWeek}</h2>
         <Link href="/" class="text-sm font-semibold leading-8 text-right">All experts <span aria-hidden="true">→</span></Link>
