@@ -51,7 +51,7 @@ export default function User(props) {
         <h2 className='text-lg font-semibold leading-8 tracking-tight'>Week {currentWeek < 10 ? `0${currentWeek}` : currentWeek}</h2>
         <Link href="/" class="text-sm font-semibold leading-8 text-right">All experts <span aria-hidden="true">→</span></Link>
       </div>
-      {items ? <>
+      {!items ? <>
         <div className='mt-10 text-center'>
           <Image src={noDataIcon}></Image>
           <p>
