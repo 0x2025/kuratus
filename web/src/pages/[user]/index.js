@@ -10,7 +10,7 @@ export default function User(props) {
   const currentWeek = getWeek(new Date());
   const { items, username, slogan } = props;
 
-  const curatedItem = items.filter(item => item.href && item.title).map((item) =>
+  const curatedItem = items?.filter(item => item.href && item.title).map((item) =>
     <li key={item.id} class="relative flex items-center space-x-4 py-4">
       <div class="min-w-0">
         <div class="flex items-center gap-x-3">
