@@ -19,13 +19,12 @@ export default function User(props) {
   }
   const curatedItem = items.filter(item => item.href && item.title).map((item) =>
     <li key={item.id} class="relative flex items-center space-x-4 py-4">
-      <div class="min-w-0 flex-auto prose">
+      <div class="min-w-0">
         <div class="flex items-center gap-x-3">
-          <h2 class="min-w-0 max-w-md text-base font-semibold leading-6">
+          <h2 class="min-w-0 text-base font-semibold leading-6">
             <Link href={item.href || '#'} rel="noopener noreferrer" target="_blank"
-              className="group transition-all duration-300 ease-in-out relative  pl-1">
-              <span class="truncate text-ellipsis">{item.title}</span>
-              <span class="absolute left-0 -bottom-0 w-full h-0.5 bg-green-500 -z-10 group-hover:h-full group-hover:transition-all rounded-sm"></span>
+              className="border-b-2 border-green-500 group transition-all duration-300 ease-in-out relative  pl-1">
+              <span class="text-ellipsis">{item.title}</span>
             </Link>
           </h2>
         </div>
@@ -55,11 +54,11 @@ export default function User(props) {
         <meta name="twitter:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`}/>
         <meta name="twitter:image" content={`https://www.kuratus.com/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}&w=${currentWeek}`}/>
       </Head>
-      <div class="grid grid-cols-2 place-content-between">
+      <div class="grid grid-cols-2 place-content-between px-6">
         <h2 className='text-lg font-semibold leading-8 tracking-tight'>Week {currentWeek < 10 ? `0${currentWeek}` : currentWeek}</h2>
         <Link href="/" class="text-sm font-semibold leading-8 text-right">All experts <span aria-hidden="true">→</span></Link>
       </div>
-      <div className='border-b border-gray-200 px-4 py-5 sm:px-6'>
+      <div className='w-96 border-b border-gray-200 px-6 py-5 sm:px-6'>
         <ul>
           {curatedItem}
         </ul>
