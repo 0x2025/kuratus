@@ -1,3 +1,6 @@
+const { updateElectronApp } = require('update-electron-app');
+updateElectronApp(); // additional configuration options available
+
 const { app, BrowserWindow, globalShortcut, ipcMain, safeStorage } = require('electron')
 const { Tray, Menu, nativeImage } = require('electron')
 const Store = require('electron-store');
