@@ -10,7 +10,7 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      platforms: ['darwin','win32'],
     },
     {
       name: '@electron-forge/maker-deb',
@@ -20,6 +20,14 @@ module.exports = {
       name: '@electron-forge/maker-rpm',
       config: {},
     },
+    {
+      name: '@electron-forge/maker-dmg',
+      platforms: ['darwin'],
+      config: {
+        // background: './assets/dmg-background.png',
+        format: 'ULFO'
+      }
+    }
   ],
   publishers: [
     {
@@ -29,8 +37,7 @@ module.exports = {
           owner: '0x2025',
           name: 'kuratus'
         },
-        prerelease: true,
-        authToken: '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'
+        prerelease: true
       }
     }
   ],

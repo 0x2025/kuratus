@@ -38,7 +38,7 @@ export default function User(props) {
         <meta name="description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`} />
         <meta property="og:title" content={`Kuratus | All of us can be curators of our own learning.`} />
         <meta property="og:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`} />
-        <meta property="og:image" content={`https://www.kuratus.com/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}`} />
+        <meta property="og:image" content={`https://www.kuratus.com/api/og?username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}&w=${currentWeek}`} />
         <meta property="og:url" content={`https://www.kuratus.com/${username}`} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
