@@ -72,22 +72,22 @@ export function App() {
                 <span class="text-gray-700">Link</span>
                 <input name="href" id="href" type="text" tabIndex={0} autoFocus
                   onChange={handleChange} value={data.href}
-                  class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
+                  class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-green-500"
                   placeholder="" />
               </label>
               <label class="block">
                 <span class="text-gray-700">Title</span>
                 <input type="text" name="title" id="title"
                   onChange={handleChange} value={data.title}
-                  class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
+                  class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-green-500"
                   placeholder="" />
               </label>
               <label class="block">
-                <span class="text-gray-700">Additional details</span>
+                <span class="text-gray-700">Your words!</span>
                 <textarea
                   name="description" id="description"
                   onChange={handleChange} value={data.description}
-                  class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
+                  class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-green-500"
                   rows="5"></textarea>
               </label>
             </div>
@@ -97,7 +97,7 @@ export function App() {
 
       <div class="mt-6 flex items-center justify-center gap-x-6 px-4">
         <button type="submit"
-          class="rounded-md bg-neutral-950 px-6 py-2 text-md font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600">
+          class="rounded-md bg-green-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500">
           Create</button>
       </div>
     </form>

@@ -102,23 +102,23 @@ export default function SignUp(props) {
                                     <div>
                                         <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username <sup>https://kuratus.com/<span className="font-semibold text-gray-500">{data.username}</span></sup></label>
                                         <div class="mt-2">
-                                            <input id="username" value={data.username} onChange={handleChange} name="username" type="username" required class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset outline-0 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" />
+                                            <input id="username" value={data.username} onChange={handleChange} name="username" type="username" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 outline-0 px-2 ring-inset ring-gray-300 placeholder:text-green-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" />
                                         </div>
                                     </div>
                                     <div>
                                         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                                         <div class="mt-2">
-                                            <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 outline-0 px-2 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" />
+                                            <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 outline-0 px-2 ring-inset ring-gray-300 placeholder:text-green-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" />
                                         </div>
                                     </div>
                                     <div>
                                         <label for="slogan" class="block text-sm font-medium leading-6 text-gray-900">Headline</label>
                                         <div class="mt-2">
-                                            <input id="slogan" name="slogan" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 outline-0 px-2 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" />
+                                            <input id="slogan" name="slogan" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 outline-0 px-2 ring-inset ring-gray-300 placeholder:text-green-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" />
                                         </div>
                                     </div>
                                     <div>
-                                        <button type="submit" class="flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">Register</button>
+                                        <button type="submit" class="flex w-full justify-center rounded-md bg-green-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500">Register</button>
                                     </div>
                                     <div className="flex w-full justify-center">
                                         {showLoading()}
