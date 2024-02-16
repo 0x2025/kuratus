@@ -48,17 +48,17 @@ export function Option() {
             <div class="pointer-events-none absolute inset-0 z-10 rounded-md ring-1 ring-inset ring-gray-300"></div>
             <div>
               <label for="username" class="sr-only">Username</label>
-              <input onChange={handleChange} value={data.username} id="username" name="username" type="text" autocomplete="text" required class="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Username" />
+              <input onChange={handleChange} value={data.username} id="username" name="username" type="text" autocomplete="text" required class="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" placeholder="Username" />
             </div>
             <div>
               <label for="password" class="sr-only">Password</label>
-              <input onChange={handleChange} value={data.password} id="password" name="password" type="text" autocomplete="current-password" required class="relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Password" />
+              <input onChange={handleChange} value={data.password} id="password" name="password" type="text" autocomplete="current-password" required class="relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" placeholder="Password" />
             </div>
           </div>
 
           <div class="mt-6 flex items-center justify-center gap-x-6 px-4">
             <button type="submit"
-              class="rounded-md bg-neutral-950 px-6 py-2 text-md font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600">
+              class="rounded-md bg-green-500 px-6 py-2 text-md font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
               Save</button>
           </div>
           <div class="mt-6 flex items-center justify-center gap-x-6 px-4 text-green-600">

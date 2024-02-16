@@ -10,11 +10,11 @@ export default function Downloads(props) {
                 Stay up to date on industry standards while developing your own learning with our tools.</p>
                 <div class="mt-8 flex flex-wrap gap-x-6 gap-y-4">
                     <Link  class="disabled inline-flex justify-center rounded-lg border py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-sm outline-2 outline-offset-2 transition-colors border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80" variant="outline" color="gray"
-                        href="/downloads?type=app">
+                        href="https://github.com/0x2025/kuratus/releases">
                         <span class="ml-2.5">Desktop App</span>
                     </Link>
                     <Link  class="disabled inline-flex justify-center rounded-lg border py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-sm outline-2 outline-offset-2 transition-colors border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80" variant="outline" color="gray"
-                        href="/downloads?type=app">
+                        href="#">
                         <span class="ml-2.5">Mobile App</span>
                     </Link>
                 </div>
