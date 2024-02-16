@@ -1,6 +1,6 @@
 {
   "name": "kuratus",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A tool for curators to curate your own learning on kuratus.com",
   "repository": {
     "url": "https://github.com/0x2025/kuratus.git"

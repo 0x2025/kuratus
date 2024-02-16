@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     const { href, title, description, tags } = req.body;
     const newItem = { href, title, description, tags, id: uuidv4() };
     file.push(newItem);
-    await PutItem(key, file);
+    PutItem(key, file);
     res.status(200).json(newItem);
     return
   }
