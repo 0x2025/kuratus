@@ -15,9 +15,9 @@ export default function Home(props) {
                 <div class="flex min-h-full flex-col justify-center py-8 sm:px-6 lg:px-8">
                     <div class="mt-10 sm:mx-auto sm:w-full sm:min-w-[480px]">
                         <div class="px-6 py-12 shadow sm:rounded-lg sm:px-12 prose">
-                        <strong>Kuratus' mission is to offer you:</strong>
+                        <strong>Kuratus&apos; mission is to offer you:</strong>
                             <ul>
-                                <li>A professional network where people share what they're learning.</li>
+                                <li>A professional network where people share what they&apos;re learning.</li>
                                 <li>Curate your own learning. Aspired to</li>
                                 <ul>
                                     <li>https://this-week-in-rust.org</li>

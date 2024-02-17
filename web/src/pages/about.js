@@ -14,9 +14,9 @@ export default function About(props) {
 
                     <div class="mt-10 sm:mx-auto sm:w-full sm:min-w-[480px]">
                         <div class="px-6 py-12 shadow sm:rounded-lg sm:px-12 prose">
-                        Kuratus' mission is to offer you:
+                        Kuratus&apos; mission is to offer you:
                             <ul>
-                                <li>A professional network where people share what they're learning.</li>
+                                <li>A professional network where people share what they&apos;re learning.</li>
                                 <li>Curate your own learning. Aspired to</li>
                                 <ul>
                                     <li>https://this-week-in-rust.org</li>
