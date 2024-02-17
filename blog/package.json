@@ -4,7 +4,7 @@
   "license": "MIT",
   "description": "A starter repository for a blog web site using the Eleventy static site generator.",
   "scripts": {
-    "build-ci": "npm run js-build && eleventy",
+    "build-ci": "npm run js-build && eleventy && npm run test",
     "build": "npm run clean && npm run build-ci",
     "watch": "concurrently \"npm run serve\" \"npm run js-build-watch\" \"npm run test-watch\"",
     "serve": "npm run clean && eleventy --serve",
@@ -48,7 +48,6 @@
   "dependencies": {
     "@ampproject/toolbox-optimizer": "^2.9.0",
     "any-shell-escape": "^0.1.1",
-    "browser-sync": "^3.0.2",
     "clean-css": "^4.2.3",
     "concurrently": "^7.0.0",
     "csp-hash-generator": "0.0.3",
