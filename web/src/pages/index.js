@@ -11,6 +11,34 @@ export default function Home(props) {
       <div class="flex items-center flex-wrap pt-10 px-6">
         {listCuratus}
       </div>
+      <div class="flex flex-col items-center flex-wrap">
+                <div class="flex min-h-full flex-col justify-center py-8 sm:px-6 lg:px-8">
+                    <div class="mt-10 sm:mx-auto sm:w-full sm:min-w-[480px]">
+                        <div class="px-6 py-12 shadow sm:rounded-lg sm:px-12 prose">
+                        <strong>Kuratus' mission is to offer you:</strong>
+                            <ul>
+                                <li>A professional network where people share what they're learning.</li>
+                                <li>Curate your own learning. Aspired to</li>
+                                <ul>
+                                    <li>https://this-week-in-rust.org</li>
+                                    <li>https://nodeweekly.com</li>
+                                    <li>https://elixirweekly.net</li>
+                                </ul>
+                                <li>No distractions. <code>Control + K</code> allows for quick and furious action.</li>
+                                <li>Discover what other professionals are studying.</li>
+                            </ul>
+                            <strong>Begin with simplicity.</strong>
+                            <ol>
+                                <li>
+                                  <Link href={'/signup'}>Create an account.</Link></li>
+                                <li>
+                                Sign in to the app after <Link href={'/download'}>downloading</Link>. You are now ready to share!
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
   );
 }

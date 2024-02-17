@@ -18,7 +18,7 @@ export function App() {
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, privateMode = false) => {
     e.preventDefault()
     const credential = await window.electronAPI.loadOptions();
     if (!credential) {
@@ -32,7 +32,7 @@ export function App() {
         "Content-Type": "application/json",
         "Authorization": `Basic ${btoa(`${credential.username}:${credential.password}`)}`
       }),
-      body: JSON.stringify(data)
+      body: JSON.stringify({ ...data, private: privateMode })
     })
 
     fetch(request)
@@ -98,7 +98,11 @@ export function App() {
       <div class="mt-6 flex items-center justify-center gap-x-6 px-4">
         <button type="submit"
           class="rounded-md bg-green-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500">
-          Create</button>
+          Save</button>
+        <button type="button"
+          onClick={(e) => handleSubmit(e, true)}
+          class="group inline-flex ring-1 items-center justify-center rounded-md py-2 px-4 text-sm focus:outline-none ring-slate-200 text-slate-700 hover:text-slate-900 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-green-500 focus-visible:ring-slate-300">
+          Save in private</button>
       </div>
     </form>
 
