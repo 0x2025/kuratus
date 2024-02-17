@@ -14,7 +14,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "package": "electron-forge package",
-    "release": "dotenv -e ./.env -- electron-forge publish --target=@electron-forge/maker-zip",
+    "release": "dotenv -e ./.env -- electron-forge publish",
     "make": "electron-forge make"
   },
   "author": "Kuratus",
