@@ -1,6 +1,6 @@
 /* Color customization */
 :root {
-  --primary: #f9c412;
+  --primary: rgb(34, 197, 94);
   --primary-dark: #e7bf60;
 }
 
@@ -838,8 +838,8 @@ video {
 }
 body {
   font-family: var(--font-family);
-  background: #181818;
-  color: #eee;
+  background: linear-gradient(to bottom,transparent,rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  color: rgb(var(--foreground-rgb))
 }
 section {
   margin-left: auto;
@@ -926,9 +926,7 @@ main {
   border-top: 0.5px solid #ccc;
 }
 footer {
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 3em;
+  color: #000;
   text-align: center;
 }
 footer > * {
