@@ -10,6 +10,10 @@ const nextConfig = {
             {
                 source: '/posts/:path*',
                 destination: 'https://blog.kuratus.com/posts/:path*',
+            },
+            {
+                source: '/blog/:path*',
+                destination: 'https://blog.kuratus.com/:path*',
             }
         ];
     }
