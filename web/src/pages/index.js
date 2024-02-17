@@ -32,7 +32,7 @@ export default function Home(props) {
                                 <li>
                                   <Link href={'/signup'}>Create an account.</Link></li>
                                 <li>
-                                Sign in to the app after <Link href={'/download'}>downloading</Link>. You are now ready to share!
+                                Sign in to the app after <Link href={'/downloads'}>downloading</Link>. You are now ready to share!
                                 </li>
                             </ol>
                         </div>
