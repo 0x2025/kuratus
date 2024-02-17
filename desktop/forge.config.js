@@ -1,6 +1,8 @@
 module.exports = {
   packagerConfig: {
     asar: true,
+    platforms:'all',
+    arch:['x64','arm64']
   },
   rebuildConfig: {},
   makers: [
@@ -10,7 +12,7 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin','win32'],
+      platforms: ['darwin','win32','linux'],
     },
     {
       name: '@electron-forge/maker-deb',
@@ -32,6 +34,7 @@ module.exports = {
   publishers: [
     {
       name: '@electron-forge/publisher-github',
+      platforms: ['darwin', 'linux','win32'],
       config: {
         repository: {
           owner: '0x2025',

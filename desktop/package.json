@@ -14,7 +14,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "package": "electron-forge package",
-    "release":"source ./.env && electron-forge publish",
+    "release": "dotenv -e ./.env -- electron-forge publish --target=@electron-forge/maker-zip",
     "make": "electron-forge make"
   },
   "author": "Kuratus",
@@ -45,6 +45,7 @@
     "@electron-forge/publisher-github": "^7.2.0",
     "@tailwindcss/forms": "^0.5.7",
     "bootstrap-icons": "^1.11.3",
+    "dotenv-cli": "^7.3.0",
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.1.0",
     "jsdom": "^24.0.0",
