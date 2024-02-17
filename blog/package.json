@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A Blog Template using eleventy and terminal css.",
   "scripts": {
-    "build": "eleventy && npm run sass",
+    "build": "npm install && eleventy && npm run sass",
     "serve": "concurrently 'eleventy --serve' 'npm run sass:watch'",
     "sass": "sass styles:_site/styles --no-source-map --style=compressed --update",
     "sass:watch": "npm run sass && npm run sass -- --watch",
