@@ -84,8 +84,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksAsyncFilter(
     "addHash",
     function (absolutePath, callback) {
-      absolutePath = absolutePath.replace('/blog','');
-      readFile(path.join(".", absolutePath), {
+      var physicalPath = absolutePath.replace('/blog','');
+      readFile(path.join(".", physicalPath), {
         encoding: "utf-8",
       })
         .then((content) => {
