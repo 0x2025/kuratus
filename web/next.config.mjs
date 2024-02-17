@@ -8,8 +8,8 @@ const nextConfig = {
                 destination: "https://blog.kuratus.com",
             },
             {
-                source: '/blog/:path*',
-                destination: 'https://blog.kuratus.com/:path*',
+                source: '/posts/:path*',
+                destination: 'https://blog.kuratus.com/posts/:path*',
             }
         ];
     }
