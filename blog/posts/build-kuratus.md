@@ -32,7 +32,7 @@ Cura (care) --------> curatus -----------> curate
 ```
 Select, organize, and look after the items in collections.
 
-And `c` become `k` as this domain is avaiable.
+And since this domain is available, `c` becomes `k`.
 
 
 
