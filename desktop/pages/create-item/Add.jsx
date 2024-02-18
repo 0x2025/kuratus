@@ -32,7 +32,7 @@ export function App() {
         "Content-Type": "application/json",
         "Authorization": `Basic ${btoa(`${credential.username}:${credential.password}`)}`
       }),
-      body: JSON.stringify({ ...data, private: privateMode })
+      body: JSON.stringify({ ...data, _private: privateMode })
     })
 
     fetch(request)

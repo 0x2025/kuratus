@@ -18,7 +18,7 @@ app.whenReady().then(() => {
   // Register a 'CommandOrControl+X' shortcut listener.
   const ret = globalShortcut.register('CommandOrControl+K', () => {
     console.log('CommandOrControl+K is pressed')
-    createWindow('./dist/pages/create-item/index.html', 800, 600)
+    createWindow('./dist/pages/create-item/index.html', 800, 500)
   })
 
   if (!ret) {
