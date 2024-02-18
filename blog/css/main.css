@@ -1,7 +1,7 @@
 /* Color customization */
 :root {
   --primary: rgb(34, 197, 94);
-  --primary-dark: #e7bf60;
+  --primary-dark: rgb(34, 197, 94);
   --foreground-rgb: 0,0,0;
   --background-start-rgb: 214,219,220;
   --background-end-rgb: 255,255,255;
@@ -229,13 +229,6 @@ html {
   }
 }
 */
-@font-face {
-  font-family: "Inter UI";
-  font-weight: 100 900;
-  font-style: oblique 0deg 10deg;
-  src: url("/fonts/Inter-3.19.var.woff2") format("woff2");
-}
-
 /*
 
 The Bahunya CSS framework https://kimeiga.github.io/bahunya/
@@ -409,8 +402,6 @@ template {
 }
 h1 {
   font-size: 3em;
-  line-height: 1.25;
-  margin-bottom: 0.5em;
 }
 h2 {
   font-size: 2.5em;
@@ -454,7 +445,8 @@ ul {
   margin-bottom: 1.5em;
 }
 h1 {
-  font-size: 2.074rem;
+  font-size: 3rem;
+  font-weight: 800;
 }
 h1,
 h2 {
@@ -497,8 +489,8 @@ ul {
 }
 @media (min-width: 600px) {
   h1 {
-    font-size: 4.3978rem;
-    line-height: 4.4rem;
+    font-size: 3rem;
+    font-weight: 800;
   }
   h1,
   h2 {
@@ -605,7 +597,7 @@ th {
   vertical-align: top;
 }
 thead th {
-  border-bottom: 1px solid #f9c412;
+  border-bottom: 1px solid var(--primary);
 }
 table {
   display: table;
@@ -642,7 +634,7 @@ kbd {
   color: #7ec699;
 }
 mark {
-  background: #f9c412;
+  background: var(--primary);
   padding: 0 0.3em;
 }
 h1,
@@ -659,7 +651,7 @@ h6 {
   font-style: italic;
 }
 a {
-  color: #f9c412;
+  color: var(--primary);
   text-decoration: none;
 }
 a:hover {
@@ -692,8 +684,8 @@ dt {
   }
 }
 html {
-  font-family: Inter UI, sans-serif;
-  --font-family: Inter UI, sans-serif;
+  font-family: "Playfair Display", serif;
+  --font-family: "Playfair Display", serif;
 }
 form {
   padding: 1.5em 1.5em 0;
@@ -787,7 +779,7 @@ input[type="submit"][disabled] {
 button:not([disabled]),
 button[type="submit"],
 input[type="submit"] {
-  background: #f9c412;
+  background: var(--primary);
   color: #181818;
 }
 button:not([disabled]):hover,
@@ -840,7 +832,7 @@ video {
   max-width: 100%;
 }
 body {
-  font-family: var(--font-family);
+  font-family: sans-serif;
   background: linear-gradient(to bottom,transparent,rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
   color: rgb(var(--foreground-rgb))
 }
@@ -976,10 +968,10 @@ dd {
   margin-left: 2.25em;
 }
 dd + dt {
-  border-top: 1px solid #f9c412;
+  border-top: 1px solid var(--primary);
 }
 blockquote {
-  border-left: 1px solid #f9c412;
+  border-left: 1px solid var(--primary);
   padding: 0 1.5em;
   margin: 1.5em 0 1.5em 1.5em;
 }
