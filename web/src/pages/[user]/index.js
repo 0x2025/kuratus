@@ -72,7 +72,8 @@ export default function User(props) {
 
 export const getServerSideProps = async (context) => {
   const user = context.params?.user;
-  const currentWeek = getWeek(new Date());
+  const today = new Date();
+  const currentWeek = isSunday(today) ? getWeek(new Date()) - 1 : getWeek(new Date());
   const key = `${user}/week-${currentWeek}.json`;
   const profileKey = `${user}/profile.json`;
   // Fetch data from external API
