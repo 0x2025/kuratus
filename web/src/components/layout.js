@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <div className='min-h-screen flex flex-col items-center'>
       <Navbar />
-      <main className='pb-20'>
+      <main className='pb-4'>
         {children}
       </main>
       <Footer />
