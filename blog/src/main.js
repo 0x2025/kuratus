@@ -201,7 +201,7 @@ addEventListener(
 
 setTimeout(function(){
   trackReadingProgress();
-},2000)
+},500)
 
 function trackReadingProgress() {
   if (window.ResizeObserver && document.querySelector("header nav #nav")) {
