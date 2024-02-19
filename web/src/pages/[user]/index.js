@@ -57,7 +57,7 @@ export default function User(props) {
           <Image src={noDataIcon}></Image>
           <p className='text-center'>
             <strong>Welcome to Kuratus.</strong> 
-            The author hasn't shared yet. In the meantime, you can <Link 
+            The author hasn&apos;t shared yet. In the meantime, you can <Link 
             className="border-b-2 border-green-500 group transition-all duration-300 ease-in-out relative"
              href={'/signup'}>create an account</Link> and share your own learning to the world.
             </p>
