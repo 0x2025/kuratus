@@ -53,10 +53,14 @@ export default function User(props) {
         <Link href="/" class="text-sm font-semibold leading-8 text-right">All experts <span aria-hidden="true">→</span></Link>
       </div>
       {!items ? <>
-        <div className='mt-10 text-center'>
+        <div className='w-96'>
           <Image src={noDataIcon}></Image>
-          <p>
-            No data.</p>
+          <p className='text-center'>
+            <strong>Welcome to Kuratus.</strong> 
+            The author hasn't shared yet. In the meantime, you can <Link 
+            className="border-b-2 border-green-500 group transition-all duration-300 ease-in-out relative"
+             href={'/signup'}>create an account</Link> and share your own learning to the world.
+            </p>
         </div>
       </> : <>
         <div className='w-96 border-b border-gray-200 px-6 py-5 sm:px-6'>

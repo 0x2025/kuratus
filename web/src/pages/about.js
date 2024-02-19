@@ -1,6 +1,3 @@
-import Link from "next/link";
-import { useState } from "react";
-
 export default function About(props) {
 
     return (
@@ -8,7 +5,7 @@ export default function About(props) {
             <div class="flex items-center flex-wrap">
                 <div class="flex min-h-full flex-col justify-center py-8 sm:px-6 lg:px-8">
                     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-                        <h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                        <h2 class="mt-6 text-center text-4xl font-medium tracking-tight text-green-500">
                             Curate your learning. Take notes. Share.</h2>
                     </div>
 

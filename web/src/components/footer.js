@@ -14,7 +14,7 @@ export default function Footer() {
                                     {/* <Link className="transition hover:text-green-500 dark:hover:text-green-400" href="/signin">Sign In</Link> */}
                                     <Link className="transition hover:text-green-500 dark:hover:text-green-400" href="/downloads">Downloads</Link>
                                     <Link className="transition hover:text-green-500 dark:hover:text-green-400" href="/blog">Build in public</Link>
-                                    <Link className="transition hover:text-green-500 dark:hover:text-green-400" href="https://github.com/0x2025/kuratus">Github</Link>
+                                    {/* <Link className="transition hover:text-green-500 dark:hover:text-green-400" href="https://github.com/0x2025/kuratus">Github</Link> */}
                                     <Link className="transition hover:text-green-500 dark:hover:text-green-400" href="/about">About</Link>
                                     
                                 </div>
