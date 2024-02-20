@@ -41,7 +41,7 @@ export default function Curator(props) {
                 <meta name="description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`} />
                 <meta property="og:title" content={`Kuratus | All of us can be curators of our own learning.`} />
                 <meta property="og:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`} />
-                <meta property="og:image" content={`https://www.kuratus.com/api/og?week=${currentWeek}&username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}&w=${currentWeek}`} />
+                <meta property="og:image" content={`https://www.kuratus.com/api/og?week=${currentWeek}&username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}`} />
                 <meta property="og:url" content={`https://www.kuratus.com/${username}`} />
                 <meta property="og:type" content="website" />
                 <meta name="twitter:card" content="summary_large_image" />
@@ -49,7 +49,7 @@ export default function Curator(props) {
                 <meta property="twitter:url" content={`https://www.kuratus.com/${username}`} />
                 <meta name="twitter:title" content={`Kuratus | All of us can be curators of our own learning`} />
                 <meta name="twitter:description" content={`Curated by ${username} | ${slogan} in week ${currentWeek < 10 ? `0${currentWeek}` : currentWeek}`} />
-                <meta name="twitter:image" content={`https://www.kuratus.com/api/og?week=${currentWeek}&username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}&w=${currentWeek}`} />
+                <meta name="twitter:image" content={`https://www.kuratus.com/api/og?week=${currentWeek}&username=${encodeURIComponent(username)}&slogan=${encodeURIComponent(slogan)}`} />
             </Head>
             <div class="grid grid-cols-2 place-content-between px-6">
                 <h2 className='text-lg font-semibold leading-8 tracking-tight'>
