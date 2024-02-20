@@ -1,21 +1,27 @@
 import { ImageResponse } from '@vercel/og';
-import { getWeek, nextSunday, isSunday, previousMonday, getYear, getDaysInYear, getDayOfYear, format, isMonday } from 'date-fns'
+import { getWeek, nextSunday, isSunday, previousMonday, getYear, getDaysInYear, getDayOfYear, format, isMonday, parse } from 'date-fns'
 
 export const config = {
   runtime: 'edge',
 };
 
 export default async function handler(request) {
-  const today = new Date();
-  const currentWeek = isSunday(today) ? getWeek(new Date()) - 1 : getWeek(new Date());
-
-  const sunday = format(isSunday(today) ? today : nextSunday(today), 'dd MMM');
-  const monday = format(isMonday(today) ? today : previousMonday(today), 'dd MMM');
-  const year = getYear(today);
-  const totalDays = getDaysInYear(today);
-  const percentOfYear = ((getDayOfYear(today)) / totalDays) * 100;
-  const percentOfYearRounded = Math.floor(percentOfYear * 10) / 10;
   const { searchParams } = request.nextUrl;
+  const week = searchParams.get('week');
+  let theDay = new Date();
+  if (parseInt(week) > 0) {
+    theDay = parse(week, 'I', new Date())
+  }
+
+  const currentWeek = isSunday(theDay) ? getWeek(theDay) - 1 : getWeek(theDay);
+
+  const sunday = format(isSunday(theDay) ? theDay : nextSunday(theDay), 'dd MMM');
+  const monday = format(isMonday(theDay) ? theDay : previousMonday(theDay), 'dd MMM');
+  const year = getYear(theDay);
+  const totalDays = getDaysInYear(theDay);
+  const percentOfYear = ((getDayOfYear(theDay)) / totalDays) * 100;
+  const percentOfYearRounded = Math.floor(percentOfYear * 10) / 10;
+  
 
   const username = searchParams.get('username');
   const slogan = searchParams.get('slogan');
@@ -53,7 +59,7 @@ export default async function handler(request) {
         }}
       >
         <div tw="flex text-6xl">
-          <div tw="flex flex-col px-4 w-full">
+          <div tw="flex flex-col px-14 w-full">
             <h2 tw="flex flex-col text-gray-900 text-left">
               <span tw="text-gray-900">
                 Week {currentWeek < 10 ? `0${currentWeek}` : currentWeek}
