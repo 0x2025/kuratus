@@ -11,12 +11,15 @@ export class OpenCommand implements ICommand {
     match(text: string): boolean {
         return text?.toLowerCase()
             .replace(new RegExp('  ', 'g'), '')
-            .startsWith("open"); // Use optional chaining and nullish coalescing
+            .startsWith(this.type); // Use optional chaining and nullish coalescing
     }
 
     parse(text: string): ICommand {
-        const targetUrl = text?.replace(new RegExp('  ', 'g'), '').trim().substring(4)?.trim(); // Extract URL directly after "open"
-        return new OpenCommand(targetUrl);
+        const match = text.replace(new RegExp('  ', 'g'), '').match(/^open\s+(.+)+$/);
+        if (!match) {
+            throw new Error(`Invalid open command ${text}`)
+        }
+        return new OpenCommand(match[1]);
     }
     async execute(page: Page, context: IExecutionContext): Promise<void> {
         await page.goto(this.url);

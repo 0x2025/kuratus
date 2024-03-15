@@ -4,13 +4,15 @@ import { TypingCommand } from "./TypingCommand";
 import { ClickOnCommand } from "./ClickOnCommand";
 import { StoreHeaderCommand } from "./StoreHeaderCommand";
 import { SetHeaderCommand } from "./SetHeaderCommand";
+import { WaitCommand } from "./WaitCommand";
 
 const commandList = [
     new OpenCommand(''),
     new TypingCommand('', ''),
     new ClickOnCommand(''),
     new StoreHeaderCommand('', '', ''),
-    new SetHeaderCommand('', '')
+    new SetHeaderCommand('', ''),
+    new WaitCommand(0,'')
 ];
 
 export function Parse(fileContent: string): ICommand[] {

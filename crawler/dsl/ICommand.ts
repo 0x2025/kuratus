@@ -14,14 +14,13 @@ export interface IKeyStoreDb {
 }
 
 export class LocalDb implements IKeyStoreDb {
-    static sampleDb: any = {};
+    _db: any = {};
     set(key: string, value: string): void {
-        LocalDb.sampleDb[key] = value;
+        this._db[key] = value;
     }
     get(key: string): string {
-        return LocalDb.sampleDb[key];
+        return this._db[key];
     };
-
 }
 
 export interface IExecutionContext {

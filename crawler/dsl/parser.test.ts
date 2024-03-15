@@ -1,14 +1,14 @@
 import { expect, test, describe } from "bun:test";
 import { Parse } from "./Parser";
-import { parse } from "path";
 import type { TypingCommand } from "./TypingCommand";
 import type { OpenCommand } from "./OpenCommand";
 import type { ClickOnCommand } from "./ClickOnCommand";
 import type { StoreHeaderCommand } from "./StoreHeaderCommand";
 import type { SetHeaderCommand } from "./SetHeaderCommand";
+import type { WaitCommand } from "./WaitCommand";
 
 describe("parser", () => {
-    test("parser open command", async () => {
+    test("open [url]", async () => {
 
         const file = `
             open https://linkedin.com
@@ -20,7 +20,7 @@ describe("parser", () => {
         expect((commands[0] as OpenCommand)?.url).toBe('https://linkedin.com');
         expect((commands[1] as OpenCommand)?.url).toBe('https://kuratus.com');
     });
-    test("parser open command", async () => {
+    test("open [url]", async () => {
 
         const file = `
 open https://linkedin.com
@@ -30,7 +30,7 @@ open https://linkedin.com
         expect((commands[0] as OpenCommand)?.url).toBe('https://linkedin.com');
     });
 
-    test('Typing command', () => {
+    test('type [value] for [selector]', () => {
         const dsl = `
 type sang.cu for .input
 type sang.*cu for .input  
@@ -55,7 +55,7 @@ type testingPass for input[name="session_password"]
         expect((commands[7] as TypingCommand)?.selector).toBe('input[name="session_key"]')
         expect((commands[8] as TypingCommand)?.selector).toBe('input[name="session_password"]')
     })
-    test('Click on command', () => {
+    test('click on [selector]', () => {
         const dsl = `
 click on .input
 click on  #input
@@ -69,7 +69,7 @@ click on button[type=submit]
         expect((commands[3] as ClickOnCommand)?.selector).toBe('button[type=submit]')
     })
 
-    test('Store header on command', () => {
+    test('store header [header_name] as [variable_name] on [target_url]', () => {
         const dsl = `
 store header cookie as variable_name on https://abc.com
 store header Authorization as session_cookie on https://abc.com
@@ -85,12 +85,37 @@ store header set-cookie as page_cookie on https://www.linkedin.com/uas/login-sub
         expect((commands[2] as StoreHeaderCommand)?.url).toBe('https://www.linkedin.com/uas/login-submit')
     })
 
-    test('Store header on command', () => {
+    test('set header [header_name] from [variable_name]', () => {
         const dsl = `
 set header cookie from page_cookie
 `;
         const commands = Parse(dsl);
         expect((commands[0] as SetHeaderCommand)?.headerName).toBe('cookie')
         expect((commands[0] as SetHeaderCommand)?.variableName).toBe('page_cookie')
+    })
+    test('wait [ms] for [selector]', () => {
+        const dsl = `
+wait 2000 for #global-nav__nav
+`;
+        const commands = Parse(dsl);
+        expect((commands[0] as WaitCommand)?.timeout).toBe(2000)
+        expect((commands[0] as WaitCommand)?.selector).toBe('#global-nav__nav')
+    })
+    test('wait for [selector]', () => {
+        const dsl = `
+wait 2 for #global-nav__nav
+wait for #global-nav__nav
+wait 0 for #global-nav__nav
+wait   for #global-nav__nav
+`;
+        const commands = Parse(dsl);
+        expect((commands[0] as WaitCommand)?.timeout).toBe(2)
+        expect((commands[0] as WaitCommand)?.selector).toBe('#global-nav__nav')
+        expect((commands[1] as WaitCommand)?.timeout).toBe(0)
+        expect((commands[1] as WaitCommand)?.selector).toBe('#global-nav__nav')
+        expect((commands[2] as WaitCommand)?.timeout).toBe(0)
+        expect((commands[2] as WaitCommand)?.selector).toBe('#global-nav__nav')
+        expect((commands[3] as WaitCommand)?.timeout).toBe(0)
+        expect((commands[3] as WaitCommand)?.selector).toBe('#global-nav__nav')
     })
 });

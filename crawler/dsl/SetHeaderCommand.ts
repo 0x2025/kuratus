@@ -32,7 +32,7 @@ export class SetHeaderCommand implements ICommand {
         await page.setExtraHTTPHeaders(header);
     }
     __parseText(text: string): { headerName: string; variableName: string } | null {
-        const match = text.match(/^set header\s+([\w-.*#\?\^%@!]+)\s+from\s+([\w-.*#>+ \"_=\\\[\]]+)+$/);
+        const match = text.match(/^set header\s+(.+)\s+from\s+(.+)+$/);
         if (match) {
             return {
                 headerName: match[1],

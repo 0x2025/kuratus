@@ -1,15 +1,21 @@
 {
   "type": "module",
   "scripts": {
-    "start": "node main.js"
+    "dev": "bun run --watch index.ts",
+    "build": "tsc",
+    "start": "NODE_ENV=production node ./dist/index.js",
+    "test": "bun test"
   },
   "dependencies": {
+    "fastify": "^4.26.2",
     "puppeteer": "^22.4.1"
   },
   "name": "crawler",
   "module": "index.ts",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/node": "^20.11.27",
+    "typescript": "^5.4.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

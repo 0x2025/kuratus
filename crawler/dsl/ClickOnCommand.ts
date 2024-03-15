@@ -28,7 +28,7 @@ export class ClickOnCommand implements ICommand {
         await input?.click();
     }
     __parseText(text: string): {selector: string } | null {
-        const match = text.match(/^click on\s+([\w-.*#>+ =\[\]]+)+$/);
+        const match = text.match(/^click on\s+(.+)+$/);
 
         if (match) {
             return {

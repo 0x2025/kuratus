@@ -1,41 +1,71 @@
 import puppeteer from "puppeteer";
-import { Parse } from "./dsl/Parser";
-import { Execute } from "./dsl/Executor";
 import { ExecutionContext } from "./dsl/ICommand";
-const browser = await puppeteer.launch({
-    headless: false
-});
-const page = await browser.newPage();
+import { Parse } from './dsl/Parser'
+import { Execute } from './dsl/Executor'
 
-const dsl = `
-open https://www.linkedin.com
-type sang.cungoc@gmail.com for input[name="session_key"]
-type ChangeItNow for input[name="session_password"]
-click on button[type=submit]
-store header set-cookie as page_cookie on https://www.linkedin.com/uas/login-submit
-`
-const context = new ExecutionContext();
-const commands = Parse(dsl);
-console.log(commands)
+interface IKeyPair {
+	key: string,
+	value: string
+}
+class KeyPair implements IKeyPair {
+	key: string = "";
+	value: string = "";
+}
 
-await Execute(page, commands, context);
+import Fastify from 'fastify'
+const fastify = Fastify({
+	logger: true
+})
+interface IBody {
+	input: KeyPair[];
+	dsl: string;
+	output: string[]
+}
+// Declare a route
+fastify.post<{
+	Body: IBody
+}>('/scrapes', async function handler(req, reply) {
+	const context = new ExecutionContext();
+	const { input, dsl, output } = req.body;
 
-await browser.close();
+	if (input) {
+		for (const keyPair of input) {
+			context.database.set(keyPair.key, keyPair.value)
+		}
+	}
 
+	const browser = await puppeteer.launch({
+		headless: false
+	});
 
-const browser2 = await puppeteer.launch({
-    headless: false
-});
+	try {
+		const page = await browser.newPage();
 
-const page2=await browser2.newPage();
+		const commands = Parse(dsl);
+		console.log(commands)
+		await Execute(page, commands, context);
+		await browser.close();
+		console.log(JSON.stringify(context))
+		const result: KeyPair[] = [];
+		if (output) {
+			for (const out of output) {
+				result.push({
+					key: out,
+					value: context.database.get(out)
+				});
+			}
+		}
+		return result;
+	} catch {
+		browser.close();
+		throw new Error("Invalid DSL")
+	}
+})
 
-const dsl2 = `
-set header cookie from page_cookie
-open https://www.linkedin.com/in/sangcu
-`
-
-const commands2 = Parse(dsl2);
-await Execute(page2, commands2, context);
-await page2.reload();
-await page2.waitForSelector("#")
-await browser2.close();
+// Run the server!
+try {
+	await fastify.listen({ port: 3000 })
+} catch (err) {
+	fastify.log.error(err)
+	process.exit(1)
+}

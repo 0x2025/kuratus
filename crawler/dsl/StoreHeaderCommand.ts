@@ -24,16 +24,20 @@ export class StoreHeaderCommand implements ICommand {
     }
     async execute(page: Page, context: IExecutionContext): Promise<void> {
         const interceptor = async (response: HTTPResponse) => {
-            if (response.request().url() == this.url && response.status() >= 200 && response.status() < 400) {
+            console.log(`${response.request().url()}`)
+            if (response.request().url() == this.url) {
                 const header = response.headers()[this.headerName];
                 context.database.set(this.variableName, header);
             }
         };
 
         if (this.headerName == "set-cookie") {
+            console.debug(`${this.url}`)
             await page.waitForResponse(this.url);
             const cookie = await page.cookies();
+            console.debug(cookie)
             context.database.set(this.variableName, JSON.stringify(cookie));
+            console.debug(context)
             return;
         }
 
@@ -42,7 +46,7 @@ export class StoreHeaderCommand implements ICommand {
         page.off('response', interceptor);
     }
     __parseText(text: string): { headerName: string; variableName: string, url: string } | null {
-        const match = text.match(/^store header\s+([\w-.*#\?\^%@!]+)\s+as\s+([\w-.*#>+ \"_=\\\[\]]+)\s+on\s+([\w-.*#>+ \"_=\\\[\]:\/]+)+$/);
+        const match = text.match(/^store header\s+(.+)\s+as\s+(.+)\s+on\s+(.+)+$/);
         if (match) {
             return {
                 headerName: match[1],
