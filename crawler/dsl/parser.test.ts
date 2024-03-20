@@ -6,6 +6,8 @@ import type { ClickOnCommand } from "./ClickOnCommand";
 import type { StoreHeaderCommand } from "./StoreHeaderCommand";
 import type { SetHeaderCommand } from "./SetHeaderCommand";
 import type { WaitCommand } from "./WaitCommand";
+import { ReadContentCommand } from "./ReadContentCommand";
+import { PersistentToDatabaseCommand } from "./PersistentToDatabaseCommand";
 
 describe("parser", () => {
     test("open [url]", async () => {
@@ -19,15 +21,6 @@ describe("parser", () => {
         expect(commands.length).toBe(2);
         expect((commands[0] as OpenCommand)?.url).toBe('https://linkedin.com');
         expect((commands[1] as OpenCommand)?.url).toBe('https://kuratus.com');
-    });
-    test("open [url]", async () => {
-
-        const file = `
-open https://linkedin.com
-        `
-        const commands = Parse(file);
-        expect(commands.length).toBe(1);
-        expect((commands[0] as OpenCommand)?.url).toBe('https://linkedin.com');
     });
 
     test('type [value] for [selector]', () => {
@@ -117,5 +110,30 @@ wait   for #global-nav__nav
         expect((commands[2] as WaitCommand)?.selector).toBe('#global-nav__nav')
         expect((commands[3] as WaitCommand)?.timeout).toBe(0)
         expect((commands[3] as WaitCommand)?.selector).toBe('#global-nav__nav')
+    })
+    test('read [selector] to [variable]', () => {
+        const dsl = `
+read #global-nav__nav to employee_history
+`;
+        const commands = Parse(dsl);
+        expect((commands[0] as ReadContentCommand)?.selector).toBe('#global-nav__nav');
+        expect((commands[0] as ReadContentCommand)?.variableName).toBe('employee_history');
+    })
+    test('persistent [variable] as [variable]', () => {
+        const dsl = `
+persistent employee_history to employee_history
+persistent employee_history
+persistent employee-history
+persistent employee-history to employee-history1
+`;
+        const commands = Parse(dsl);
+        expect((commands[0] as PersistentToDatabaseCommand)?.variableName).toBe('employee_history');
+        expect((commands[0] as PersistentToDatabaseCommand)?.targetName).toBe('employee_history');
+        expect((commands[1] as PersistentToDatabaseCommand)?.variableName).toBe('employee_history');
+        expect((commands[1] as PersistentToDatabaseCommand)?.targetName).toBe('employee_history');
+        expect((commands[2] as PersistentToDatabaseCommand)?.variableName).toBe('employee-history');
+        expect((commands[2] as PersistentToDatabaseCommand)?.targetName).toBe('employee-history');
+        expect((commands[3] as PersistentToDatabaseCommand)?.variableName).toBe('employee-history');
+        expect((commands[3] as PersistentToDatabaseCommand)?.targetName).toBe('employee-history1');
     })
 });

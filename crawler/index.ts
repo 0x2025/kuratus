@@ -1,5 +1,7 @@
+require('dotenv').config()
+
 import puppeteer from "puppeteer";
-import { ExecutionContext } from "./dsl/ICommand";
+import { ExecutionContext } from "./dsl/ExecutionContext";
 import { Parse } from './dsl/Parser'
 import { Execute } from './dsl/Executor'
 
@@ -21,6 +23,7 @@ interface IBody {
 	dsl: string;
 	output: string[]
 }
+
 // Declare a route
 fastify.post<{
 	Body: IBody
@@ -35,17 +38,16 @@ fastify.post<{
 	}
 
 	const browser = await puppeteer.launch({
-		headless: false
+		headless: false,
+		args: ['--no-sandbox']
 	});
 
 	try {
 		const page = await browser.newPage();
-
+		//page.setDefaultTimeout(10000);
 		const commands = Parse(dsl);
-		console.log(commands)
 		await Execute(page, commands, context);
 		await browser.close();
-		console.log(JSON.stringify(context))
 		const result: KeyPair[] = [];
 		if (output) {
 			for (const out of output) {
@@ -56,16 +58,21 @@ fastify.post<{
 			}
 		}
 		return result;
-	} catch {
+	} catch (e) {
 		browser.close();
-		throw new Error("Invalid DSL")
+		throw e;
 	}
 })
-
+fastify.get('/ping', async function handler(req, reply) {
+	return "Pong";
+})
+fastify.get('/test-storage', async function handler(req, reply) {
+	const context = new ExecutionContext();
+	await context.persistent.set('my-test-key',"Hello from html value as text");
+	return "OK";
+})
 // Run the server!
-try {
-	await fastify.listen({ port: 3000 })
-} catch (err) {
-	fastify.log.error(err)
-	process.exit(1)
-}
+fastify.listen({
+	host: "0.0.0.0",
+	port: 3000
+})

@@ -35,9 +35,7 @@ export class StoreHeaderCommand implements ICommand {
             console.debug(`${this.url}`)
             await page.waitForResponse(this.url);
             const cookie = await page.cookies();
-            console.debug(cookie)
             context.database.set(this.variableName, JSON.stringify(cookie));
-            console.debug(context)
             return;
         }
 

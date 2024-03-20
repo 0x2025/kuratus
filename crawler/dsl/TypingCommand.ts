@@ -32,7 +32,7 @@ export class TypingCommand implements ICommand {
     }
 
     __parseText(text: string): { value: string; selector: string } | null {
-        const match = text.match(/^type\s+([\w-.*#\?\^%@!]+)\s+for\s+([\w-.*#>+ \"_=\\\[\]]+)$/);
+        const match = text.match(/^type\s+(.+)\s+for\s+(.+)$/);
 
         if (match) {
             return {

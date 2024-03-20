@@ -5,6 +5,8 @@ import { ClickOnCommand } from "./ClickOnCommand";
 import { StoreHeaderCommand } from "./StoreHeaderCommand";
 import { SetHeaderCommand } from "./SetHeaderCommand";
 import { WaitCommand } from "./WaitCommand";
+import { ReadContentCommand } from "./ReadContentCommand";
+import { PersistentToDatabaseCommand } from "./PersistentToDatabaseCommand";
 
 const commandList = [
     new OpenCommand(''),
@@ -12,7 +14,9 @@ const commandList = [
     new ClickOnCommand(''),
     new StoreHeaderCommand('', '', ''),
     new SetHeaderCommand('', ''),
-    new WaitCommand(0,'')
+    new WaitCommand(0, ''),
+    new ReadContentCommand('', ''),
+    new PersistentToDatabaseCommand('','')
 ];
 
 export function Parse(fileContent: string): ICommand[] {

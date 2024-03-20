@@ -26,8 +26,9 @@ export class WaitCommand implements ICommand {
     }
 
     async execute(page: Page): Promise<void> {
+        console.debug(`${ (this.timeout == 0 ? 3 : this.timeout) * 1000 }`);
         await page.waitForSelector(this.selector, {
-            timeout: (this.timeout ?? 3) * 1000 // convert from second to milisecond
+            timeout: (this.timeout == 0 ? 3 : this.timeout) * 1000 // convert from second to milisecond
         });
     }
     __parseText(text: string): { timeout: number, selector: string } | null {

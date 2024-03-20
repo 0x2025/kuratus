@@ -12,6 +12,9 @@ export interface IKeyStoreDb {
     set: (key: string, value: string) => void,
     get: (key: string) => string
 }
+export interface IKeyStoreAsyncDb {
+    set: (key: string, value: string) => Promise<void>,
+}
 
 export class LocalDb implements IKeyStoreDb {
     _db: any = {};
@@ -24,12 +27,9 @@ export class LocalDb implements IKeyStoreDb {
 }
 
 export interface IExecutionContext {
+    id: string;
     link: string;
     database: IKeyStoreDb,
+    persistent: IKeyStoreAsyncDb
 }
 
-export class ExecutionContext implements IExecutionContext {
-    link:string="";
-    hash: any = {};
-    database = new LocalDb()
-}
